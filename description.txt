@@ -1,0 +1,7 @@
+GitHub repo link: https://github.com/inbumbaek/Grocery_Bag
+
+Organize refrigerator and the need for efficient grocery shopping.
+User registration and login functionality.
+User-friendly interface to add or remove items from the grocery bag.
+User-friendly interface to input and track items in the refrigerator.
+Integration with the refrigerator to suggest items that need restocking.
