@@ -12,7 +12,7 @@ app.use(express.json(), express.urlencoded({ extended: true }));
 app.use(cookieParser())
     
 const GroceryRoutes = require("./routes/groceryRoutes");
-AlbumRoutes(app);
+GroceryRoutes(app);
 
 const UserRoutes = require('./routes/userRoutes');
 UserRoutes(app);
