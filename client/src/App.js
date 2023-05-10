@@ -3,6 +3,8 @@ import { useState } from 'react';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 import Login from './components/Login';
 import Register from './components/Register';
+import CreateGrocery from './components/GroceryBag';
+
 
 function App() {
   const [grocery, setGrocery] = useState({
@@ -16,6 +18,7 @@ function App() {
         <Routes>
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
+          <Route path='/createGrocery' element={<CreateGrocery/>}/>
         </Routes>
       </BrowserRouter>
     </div>
