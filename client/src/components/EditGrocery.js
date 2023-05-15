@@ -1,9 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios'
 import { useNavigate, useParams, Link } from 'react-router-dom';
 
 const EditGrocery = (props) => {
-    const {id} = useParams()
+    const { id } = useParams()
     const navigate = useNavigate()
     const [grocery, setGrocery] = useState({
         groceryItem: '',
@@ -13,7 +13,7 @@ const EditGrocery = (props) => {
     const [errors, setErrors] = useState({})
 
     const changeHandler = (e) => {
-        setGrocery({...grocery, [e.target.name]: e.target.value})
+        setGrocery({ ...grocery, [e.target.name]: e.target.value })
     }
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const EditGrocery = (props) => {
             .catch((err) => {
                 console.log(err);
             })
-    },[])
+    }, [])
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -39,31 +39,34 @@ const EditGrocery = (props) => {
             })
     }
 
-    return(
-        <div>
-            <form onSubmit={submitHandler}>
-                <div>
-                    <label>Item</label>
-                    <input type="text" onChange={changeHandler} value={grocery.groceryItem} name='groceryItem'/>
+    return (
+        <div class="container py-4">
+            <form class="needs-validation" onSubmit={submitHandler}>
+                <div class="form-group">
+                    <label for="groceryItem" class="text-dark font-weight-bold">Grocery Item</label>
+                    <input type="text" class="form-control custom-input" onChange={changeHandler} value={grocery.groceryItem} name='groceryItem' required />
                     {
-                        errors.groceryItem?
-                        <p className='text-danger'>{errors.groceryItem.message}</p>:
-                        null
+                        errors.groceryItem ?
+                            <p class='text-danger'>{errors.groceryItem.message}</p> :
+                            null
                     }
                 </div>
-                <div>
-                    <label>Quantity</label>
-                    <input type="number" onChange={changeHandler} value={grocery.quantity} name='quantity'/>
+                <div class="form-group">
+                    <label for="quantity" class="text-dark font-weight-bold">Quantity</label>
+                    <input type="number" class="form-control custom-input" onChange={changeHandler} value={grocery.quantity} name='quantity' required />
                     {
-                        errors.quantity?
-                        <p className='text-danger'>{errors.quantity.message}</p>:
-                        null
+                        errors.quantity ?
+                            <p class='text-danger'>{errors.quantity.message}</p> :
+                            null
                     }
                 </div>
-                <input type="submit" value="Update" />
+                <div class="custom-button-container">
+                    <button type="submit" class="btn btn-primary btn-lg custom-button btn-block">Update</button>
+                </div>
             </form>
-            <Link to={"/"}>My Grocery</Link>
+            <a href="/" class="btn btn-green-custom btn-lg mt-3">Back to My Grocery Bag</a>
         </div>
-)}
+    )
+}
 
 export default EditGrocery;

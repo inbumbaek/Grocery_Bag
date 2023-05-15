@@ -1,18 +1,18 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios'
 
 const CreateGrocery = (props) => {
-    const {allGroceries,setAllGroceries} = props;
+    const { allGroceries, setAllGroceries } = props;
 
     const [grocery, setGrocery] = useState({
-        groceryItem:'',
-        quantity:''
+        groceryItem: '',
+        quantity: ''
     })
 
     const [errors, setErrors] = useState({})
 
     const changeHandler = (e) => {
-        setGrocery({...grocery, [e.target.name]: e.target.value})
+        setGrocery({ ...grocery, [e.target.name]: e.target.value })
     }
 
     const submitHandler = (e) => {
@@ -33,30 +33,31 @@ const CreateGrocery = (props) => {
     }
 
     return (
-        <div>
-            <h2>Add to My Grocery Bag:</h2>
-            <form onSubmit={submitHandler}>
-                <div>
-                    <label>Grocery Item:</label>
-                    <input type="text" onChange={changeHandler} value={grocery.groceryItem} name='groceryItem'/>
-                    {
-                        errors.groceryItem?
-                        <p className='text-danger'>{errors.groceryItem.message}</p>:
-                        null
-                    }
+        <div class="container py-4">
+            <h2 class="text-green-custom">Add to My Grocery Bag</h2>
+            <form class="needs-validation text-center" onSubmit={submitHandler}>
+                <div class="form-group">
+                    <label for="groceryItem" class="text-dark font-weight-bold">Grocery Item</label>
+                    <div class="d-flex justify-content-center">
+                        <input type="text" class="form-control custom-form-control" onChange={changeHandler} value={grocery.groceryItem} name="groceryItem" required />
+                    </div>
+                    <div class="invalid-feedback">
+                        {errors.groceryItem ? errors.groceryItem.message : null}
+                    </div>
                 </div>
-                <div>
-                    <label>Quantity:</label>
-                    <input type="number" onChange={changeHandler} value={grocery.quantity} name='quantity'/>
-                    {
-                        errors.quantity?
-                        <p className='text-danger'>{errors.quantity.message}</p>:
-                        null
-                    }
+                <div class="form-group">
+                    <label for="quantity" class="text-dark font-weight-bold">Quantity</label>
+                    <div class="d-flex justify-content-center">
+                        <input type="number" class="form-control custom-form-control" onChange={changeHandler} value={grocery.quantity} name="quantity" required />
+                    </div>
+                    <div class="invalid-feedback">
+                        {errors.quantity ? errors.quantity.message : null}
+                    </div>
                 </div>
-                <input type="submit" value="Create" />
+                <button type="submit" class="btn btn-green-custom btn-lg">Add</button>
             </form>
         </div>
-)}
+    )
+}
 
 export default CreateGrocery;

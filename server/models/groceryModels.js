@@ -9,8 +9,9 @@ const GrocerySchema = new mongoose.Schema({
     },
     quantity: {
         type: Number,
-        min:[0, 'No Quantity below 1 allowed']
-    },
+        min: [1, 'No Quantity below 1 allowed'],
+        required: [true, 'Quantity is required']
+    }
     // user_id: {
     //     type:mongoose.Types.ObjectId
     // }
