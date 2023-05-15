@@ -3,22 +3,19 @@ import { useState } from 'react';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 import Login from './components/Login';
 import Register from './components/Register';
-import CreateGrocery from './components/GroceryBag';
+import EditGrocery from './components/EditGrocery';
+import GroceryBag from './views/GroceryBag';
 
 
 function App() {
-  const [grocery, setGrocery] = useState({
-    groceryItem:'',
-    quantity: 0
-  })
-  const [errors, setErrors] = useState({})
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path='/login' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
-          <Route path='/createGrocery' element={<CreateGrocery/>}/>
+          <Route path='/' element={<GroceryBag/>}/>
+          <Route path='/updateGrocery/:id' element={<EditGrocery/>}/>
         </Routes>
       </BrowserRouter>
     </div>
