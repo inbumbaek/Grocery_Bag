@@ -40,31 +40,31 @@ const EditGrocery = (props) => {
     }
 
     return (
-        <div class="container py-4">
-            <form class="needs-validation" onSubmit={submitHandler}>
-                <div class="form-group">
-                    <label for="groceryItem" class="text-dark font-weight-bold">Grocery Item</label>
-                    <input type="text" class="form-control custom-input" onChange={changeHandler} value={grocery.groceryItem} name='groceryItem' required />
+        <div className="container py-4">
+            <form className="needs-validation" onSubmit={submitHandler}>
+                <div className="form-group">
+                    <label htmlFor="groceryItem" className="text-dark font-weight-bold">Grocery Item</label>
+                    <input type="text" className="form-control custom-input" onChange={changeHandler} value={grocery.groceryItem} name='groceryItem' required />
                     {
                         errors.groceryItem ?
-                            <p class='text-danger'>{errors.groceryItem.message}</p> :
+                            <p className='text-danger'>{errors.groceryItem.message}</p> :
                             null
                     }
                 </div>
-                <div class="form-group">
-                    <label for="quantity" class="text-dark font-weight-bold">Quantity</label>
-                    <input type="number" class="form-control custom-input" onChange={changeHandler} value={grocery.quantity} name='quantity' required />
+                <div className="form-group">
+                    <label htmlFor="quantity" className="text-dark font-weight-bold">Quantity</label>
+                    <input type="number" className="form-control custom-input" onChange={changeHandler} value={grocery.quantity} name='quantity' required />
                     {
                         errors.quantity ?
-                            <p class='text-danger'>{errors.quantity.message}</p> :
+                            <p className='text-danger'>{errors.quantity.message}</p> :
                             null
                     }
                 </div>
-                <div class="custom-button-container">
-                    <button type="submit" class="btn btn-primary btn-lg custom-button btn-block">Update</button>
+                <div className="custom-button-container">
+                    <button type="submit" className="btn btn-primary btn-lg custom-button btn-block">Update</button>
                 </div>
             </form>
-            <a href="/" class="btn btn-green-custom btn-lg mt-3">Back to My Grocery Bag</a>
+            <a href="/" className="btn btn-green-custom btn-lg mt-3">Back to My Grocery Bag</a>
         </div>
     )
 }

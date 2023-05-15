@@ -1,4 +1,5 @@
 const Grocery = require('../models/groceryModels');
+const jwt = require('jsonwebtoken');
 
 module.exports = {
     findAllGroceries: (req, res) => {
@@ -19,25 +20,29 @@ module.exports = {
     //         res.status(400).json(err)
     //     }
     // },
-    createGrocery: (req, res) => {
-        Grocery.create(req.body)
-            .then((newGrocery) => {
-                res.status(200).json(newGrocery)
-            })
-            .catch((err) => {
-                res.status(400).json(err)
-            })
-    },
-
-    // createGrocery: async (req, res) => {
-    //     try{
-    //         const newGrocery = await Grocery.create(req.body);
-    //         res.status(201).json(newGrocery);
-    //     }
-    //     catch(err){
-    //         res.status(400).json(err)
-    //     }
+    // createGrocery: (req, res) => {
+    //     Grocery.create(req.body)
+    //         .then((newGrocery) => {
+    //             res.status(200).json(newGrocery)
+    //         })
+    //         .catch((err) => {
+    //             res.status(400).json(err)
+    //         })
     // },
+
+    createGrocery: async (req, res) => {
+        try{
+            const decodedJwt = jwt.decode(req.cookies.userToken, {complete:true})
+            console.log('DECODED JWT ID', decodedJwt.payload._id);
+            const grocery = {...req.body, user_id:decodedJwt.payload._id}
+            console.log('FINALIZED GROCERY', grocery);
+            const newGrocery = await Grocery.create(grocery);
+            res.status(201).json(newGrocery);
+        }
+        catch(err){
+            res.status(400).json(err)
+        }
+    },
     
     findOneGrocery: (req, res) => {
         Grocery.findOne({_id: req.params.id})

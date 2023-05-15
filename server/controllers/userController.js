@@ -36,7 +36,7 @@ module.exports = {
                 const passwordsMatch = await bcrypt.compare(req.body.password, user.password)
                 if(passwordsMatch){
                     // * generate userToken
-                    const userToken = jwt.sign({_id: user._id, email:user.email}, secret, {expiresIn:'2h'})
+                    const userToken = jwt.sign({_id: user._id}, secret, {expiresIn:'2h'})
                     // * Log the user in
                     res.status(201).cookie('userToken', userToken, {httpOnly:true, maxAge:2 * 60 * 60 * 1000}).json(user);
                 }

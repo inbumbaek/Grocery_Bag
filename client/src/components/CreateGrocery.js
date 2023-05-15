@@ -17,7 +17,7 @@ const CreateGrocery = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/newGrocery', grocery)
+        axios.post('http://localhost:8000/api/newGrocery', grocery, {withCredentials:true})
             .then((res) => {
                 console.log(res);
                 setAllGroceries([...allGroceries, res.data]);
@@ -33,28 +33,28 @@ const CreateGrocery = (props) => {
     }
 
     return (
-        <div class="container py-4">
-            <h2 class="text-green-custom">Add to My Grocery Bag</h2>
-            <form class="needs-validation text-center" onSubmit={submitHandler}>
-                <div class="form-group">
-                    <label for="groceryItem" class="text-dark font-weight-bold">Grocery Item</label>
-                    <div class="d-flex justify-content-center">
-                        <input type="text" class="form-control custom-form-control" onChange={changeHandler} value={grocery.groceryItem} name="groceryItem" required />
+        <div className="container py-4">
+            <h2 className="text-green-custom">Add to My Grocery Bag</h2>
+            <form className="needs-validation text-center" onSubmit={submitHandler}>
+                <div className="form-group">
+                    <label htmlFor="groceryItem" className="text-dark font-weight-bold">Grocery Item</label>
+                    <div className="d-flex justify-content-center">
+                        <input type="text" className="form-control custom-form-control" onChange={changeHandler} value={grocery.groceryItem} name="groceryItem" required />
                     </div>
-                    <div class="invalid-feedback">
+                    <div className="invalid-feedback">
                         {errors.groceryItem ? errors.groceryItem.message : null}
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="quantity" class="text-dark font-weight-bold">Quantity</label>
-                    <div class="d-flex justify-content-center">
-                        <input type="number" class="form-control custom-form-control" onChange={changeHandler} value={grocery.quantity} name="quantity" required />
+                <div className="form-group">
+                    <label htmlFor="quantity" className="text-dark font-weight-bold">Quantity</label>
+                    <div className="d-flex justify-content-center">
+                        <input type="number" className="form-control custom-form-control" onChange={changeHandler} value={grocery.quantity} name="quantity" required />
                     </div>
-                    <div class="invalid-feedback">
+                    <div className="invalid-feedback">
                         {errors.quantity ? errors.quantity.message : null}
                     </div>
                 </div>
-                <button type="submit" class="btn btn-green-custom btn-lg">Add</button>
+                <button type="submit" className="btn btn-green-custom btn-lg">Add</button>
             </form>
         </div>
     )

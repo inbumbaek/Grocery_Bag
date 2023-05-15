@@ -11,10 +11,10 @@ const GrocerySchema = new mongoose.Schema({
         type: Number,
         min: [1, 'No Quantity below 1 allowed'],
         required: [true, 'Quantity is required']
+    },
+    user_id: {
+        type:mongoose.Types.ObjectId
     }
-    // user_id: {
-    //     type:mongoose.Types.ObjectId
-    // }
 }, {timestamps:true})
 
 const Grocery = mongoose.model('Grocery', GrocerySchema);
