@@ -17,7 +17,7 @@ const CreateGrocery = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/newGrocery', grocery, {withCredentials:true})
+        axios.post('http://localhost:8000/api/newGrocery', grocery, { withCredentials: true })
             .then((res) => {
                 console.log(res);
                 setAllGroceries([...allGroceries, res.data]);
@@ -39,20 +39,24 @@ const CreateGrocery = (props) => {
                 <div className="form-group">
                     <label htmlFor="groceryItem" className="text-dark font-weight-bold">Grocery Item</label>
                     <div className="d-flex justify-content-center">
-                        <input type="text" className="form-control custom-form-control" onChange={changeHandler} value={grocery.groceryItem} name="groceryItem" required />
+                        <input type="text" className="form-control custom-form-control" onChange={changeHandler} value={grocery.groceryItem} name="groceryItem" />
                     </div>
-                    <div className="invalid-feedback">
-                        {errors.groceryItem ? errors.groceryItem.message : null}
-                    </div>
+                    {
+                        errors.groceryItem ?
+                            <p className='text-danger'>{errors.groceryItem.message}</p> :
+                            null
+                    }
                 </div>
                 <div className="form-group">
                     <label htmlFor="quantity" className="text-dark font-weight-bold">Quantity</label>
                     <div className="d-flex justify-content-center">
-                        <input type="number" className="form-control custom-form-control" onChange={changeHandler} value={grocery.quantity} name="quantity" required />
+                        <input type="number" className="form-control custom-form-control" onChange={changeHandler} value={grocery.quantity} name="quantity" />
                     </div>
-                    <div className="invalid-feedback">
-                        {errors.quantity ? errors.quantity.message : null}
-                    </div>
+                    {
+                        errors.quantity ?
+                            <p className='text-danger'>{errors.quantity.message}</p> :
+                            null
+                    }
                 </div>
                 <button type="submit" className="btn btn-green-custom btn-lg">Add</button>
             </form>

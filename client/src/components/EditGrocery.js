@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const EditGrocery = (props) => {
     const { id } = useParams()
@@ -31,7 +31,7 @@ const EditGrocery = (props) => {
         axios.put(`http://localhost:8000/api/updateGrocery/${id}`, grocery)
             .then((res) => {
                 console.log(res);
-                navigate('/')
+                navigate('/groceryBag')
             })
             .catch((err) => {
                 console.log(err);

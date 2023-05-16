@@ -1,6 +1,5 @@
 import './App.css';
-import { useState } from 'react';
-import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from './components/Login';
 import Register from './components/Register';
 import EditGrocery from './components/EditGrocery';
@@ -12,9 +11,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path='/login' element={<Login/>}/>
+          <Route path='/' element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
-          <Route path='/' element={<GroceryBag/>}/>
+          <Route path='/groceryBag' element={<GroceryBag/>}/>
           <Route path='/updateGrocery/:id' element={<EditGrocery/>}/>
         </Routes>
       </BrowserRouter>

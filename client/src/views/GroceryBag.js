@@ -17,7 +17,6 @@ const GroceryBag = (props) => {
         })
     }
     return (
-        
         <div className="container">
             <div className="row">
                 <div className="col-md-6 mt-4">
@@ -27,7 +26,7 @@ const GroceryBag = (props) => {
                     <Display allGroceries={allGroceries} setAllGroceries={setAllGroceries} />
                 </div>
             </div>
-            <button onClick={logout}>Logout</button>
+            <button className = "btn btn-primary" onClick={logout}>Logout</button>
         </div>
     )
 }
