@@ -29,7 +29,18 @@ module.exports = {
     //             res.status(400).json(err)
     //         })
     // },
-
+    allGroceriesByLoggedInUser: async (req, res) => {
+        try{
+            const decodedJwt = jwt.decode(req.cookies.userToken, {complete:true})
+            const user_id = decodedJwt.payload._id
+            const groceries = await Grocery.find({user_id:user_id})
+            res.status(200).json(groceries)
+        }
+        catch(err){
+            res.status(400).json(err)
+        }
+    },
+    
     createGrocery: async (req, res) => {
         try{
             const decodedJwt = jwt.decode(req.cookies.userToken, {complete:true})

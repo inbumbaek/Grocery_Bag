@@ -4,7 +4,7 @@ const GrocerySchema = new mongoose.Schema({
     groceryItem: {
         type: String,
         required:[true, 'Grocery item is required'],
-        minLength:[1, 'The Item name must be 1 or more characters'],
+        minLength:[2, 'The Item name must be 2 or more characters'],
         maxLength:[50, 'The Item name is too long']
     },
     quantity: {
