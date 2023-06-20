@@ -84,6 +84,7 @@ const Register = (props) => {
                         {errors.confirmPassword ? errors.confirmPassword.message : null}
                 </div>
                 <button type="submit" className="btn btn-primary">Create an account</button>
+                {/* button color change */}
             </form>
             <div className="text-center">
                 <p>Already have an account? <Link to="/">Log in here</Link></p>
