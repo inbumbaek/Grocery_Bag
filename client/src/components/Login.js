@@ -34,11 +34,16 @@ const Login = (props) => {
             <form onSubmit={loginHandler} className='col-4 mx-auto user-form'>
                 <label className='form-label text-dark font-weight-bold'>Email: </label>
                 <input className='form-control' type='text' onChange={changeHandler} value={userLogin.email} name='email'/>
-                
+                    {userLogin.email.length < 2 && userLogin.email.length > 0 ? (
+                    <p>Email must be at least 2 characters</p>
+                    ) : null}
                 <label className='form-label text-dark font-weight-bold'>Password: </label>
                 <input className='form-control' type='password' onChange={changeHandler} value={userLogin.password} name='password'/>
-
+                    {userLogin.password.length < 8 && userLogin.password.length > 0 ? (
+                    <p>Password be at least 8 characters</p>
+                    ) : null}
                 <button className='btn btn-dark mt-3'>Sign In</button>
+                {/* button color change */}
                 <br />
                 <Link to={'/register'}>New to Grocery Bag? Register</Link>
             </form>
